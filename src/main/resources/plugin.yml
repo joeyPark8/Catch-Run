@@ -1,0 +1,4 @@
+name: catch-catch
+version: '${version}'
+main: com.github.joeypark8.catchcatch.Catch_catch
+api-version: '1.19'
