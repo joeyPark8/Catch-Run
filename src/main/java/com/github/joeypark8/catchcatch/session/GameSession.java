@@ -1,6 +1,7 @@
 package com.github.joeypark8.catchcatch.session;
 
 import com.github.joeypark8.catchcatch.Catch_catch;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -102,9 +103,35 @@ public class GameSession {
             player.getInventory().addItem(new ItemStack(Material.IRON_SWORD)); // Give sword
         }
 
-        catcherTeam.getPlayers().forEach(p -> { //술래 선물
-            
+        //TODO: check stability
+        //consider using ->  getEntries()
+        catcherTeam.getPlayers().forEach(p -> { //술래 맞음
+            Player player = p.getPlayer();
+
+            assert player != null;
+            player.sendMessage(
+                    Component.text("당신은 ")
+                            .append(Component.text("술래")
+                                            .color(NamedTextColor.DARK_PURPLE))
+                            .append(Component.text("입니다!"))
+            );
+
+
         });
+        runnerTeam.getPlayers().forEach(p -> { //술래 아님: 러너
+            Player player = p.getPlayer();
+
+            assert player != null;
+            player.sendMessage(
+                    Component.text("당신은 ")
+                            .append(Component.text("러너")
+                                            .color(NamedTextColor.GREEN))
+                            .append(Component.text("입니다!"))
+            );
+
+
+        });
+
     }
 
     public void handleStepThree() {
